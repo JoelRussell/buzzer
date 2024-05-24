@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "4.14.1",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.2",
     "socketio": "1.0.0"
   }
 }
