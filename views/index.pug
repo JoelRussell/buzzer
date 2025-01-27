@@ -15,11 +15,8 @@ html
         h2="Let's play!"
         input(type='text' name='name' placeholder='Your name' required='required')
         select(name='sound' placeholder='Your sound' required='required')
-          option(value='bell') Bell
-          option(value='church') Church Bell
-          option(value='balloon') Balloon Squeak
-          option(value='eh') Eh?
-          option(value='rimshot') Rimshot
+          each sound in sounds
+            option(value=sound)=sound.charAt(0).toUpperCase() + sound.slice(1)
         button(type='submit')='Join!'
 
       div.view.js-joined.hidden
