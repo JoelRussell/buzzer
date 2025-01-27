@@ -15,10 +15,7 @@ let data = {
 
 const getData = () => ({
   users: [...data.users],
-  buzzes: [...data.buzzes].map(b => {
-    const [ name, team ] = b.split('-')
-    return { name, team }
-  })
+  buzzes: [...data.buzzes]
 })
 
 app.use(express.static('public'))
@@ -35,7 +32,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('buzz', (user) => {
-    data.buzzes.add(`${user.name}-${user.team}`)
+    data.buzzes.add({ name: user.name, sound: user.sound })
     io.emit('buzzes', [...data.buzzes])
     console.log(`${user.name} buzzed in!`)
   })

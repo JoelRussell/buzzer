@@ -8,12 +8,14 @@ socket.on('active', (numberActive) => {
 })
 
 socket.on('buzzes', (buzzes) => {
+  console.log(buzzes);
+  if (buzzList.children.length == 0 && buzzes.length > 0) {
+    // Play sound
+    const audio = new Audio(`/sounds/${buzzes[0].sound}.mp3`);
+    audio.play();
+  }
   buzzList.innerHTML = buzzes
-    .map(buzz => {
-      const p = buzz.split('-')
-      return { name: p[0], team: p[1] }
-    })
-    .map(user => `<li>${user.name} on Team ${user.team}</li>`)
+    .map(user => `<div class="buzz">${user.name}</div>`)
     .join('')
 })
 
